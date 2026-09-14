@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quitanda da Serra — mercado, armazém e hortifruti em São Francisco Xavier.">
+  <title>Quitanda da Serra | São Francisco Xavier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Quitanda da Serra - início">
+      <span class="brand-mark">QS</span>
+      <span>
+        <strong>Quitanda da Serra</strong>
+        <small>Mercado • Armazém • Hortifruti</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio">Início</a>
+      <a href="#historia">Nossa história</a>
+      <a href="#loja">Loja</a>
+      <a href="#contato">Contato</a>
+      <button class="nav-cart" id="openCart">Carrinho <span id="cartCount">0</span></button>
+      <button class="nav-login" id="openAuth">Entrar</button>
+      <button class="nav-admin" id="openAdmin">Área do proprietário</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow">Há mais de 18 anos em São Francisco Xavier</span>
+        <h1>O sabor da serra,<br><em>perto de você.</em></h1>
+        <p>Mercado, armazém e hortifruti em um ambiente acolhedor, espaçoso e cheio de produtos especiais.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#loja">Conheça a loja</a>
+          <a class="btn btn-light" href="#historia">Nossa história</a>
+        </div>
+      </div>
+      <div class="hero-note">
+        <span>🌿</span>
+        <div><strong>Produtos selecionados</strong><small>Qualidade para sua mesa</small></div>
+      </div>
+    </section>
+
+    <section class="quick-info">
+      <article><span>🥕</span><div><strong>Hortifruti</strong><small>Fresquinho todos os dias</small></div></article>
+      <article><span>🧺</span><div><strong>Armazém</strong><small>Praticidade para sua rotina</small></div></article>
+      <article><span>🏡</span><div><strong>Produtos artesanais</strong><small>Sabores da região</small></div></article>
+      <article><span>🚗</span><div><strong>Estacionamento</strong><small>Amplo e em frente à loja</small></div></article>
+    </section>
+
+    <section class="section history" id="historia">
+      <div class="section-photo"><img src="assets/fachada.png" alt="Fachada da Quitanda da Serra"></div>
+      <div class="section-copy">
+        <span class="eyebrow">Nossa história</span>
+        <h2>Um sonho que cresceu junto com a família.</h2>
+        <p>Um sonho idealizado por um casal vindo de Jacareí, trazendo em sua bagagem muita história de luta e determinação! Passando por diversas adversidades o casal se manteve focado em proporcionar o melhor para seus dois filhos, que sempre os acompanharam na labuta.</p>
+        <p>O comércio que teve seu início numa banca com menos de 10M², hoje conta com uma estrutura moderna e aconchegante. Há mais de 18 anos em São Francisco Xavier.</p>
+        <p>Mercado, armazém, hortifruti, tudo que você precisa está aqui. Com amplo estacionamento bem na frente, a Quitanda da Serra é um ambiente acolhedor, espaçoso, organizado, repleto de produtos diferenciais e com o atendimento que você merece.</p>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div><img src="assets/hortifruti.png" alt="Hortifruti da Quitanda da Serra"><span>Frescor e variedade</span></div>
+      <div><img src="assets/interior.png" alt="Interior da Quitanda da Serra"><span>Um mercado completo</span></div>
+    </section>
+
+    <section class="section shop-section" id="loja">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Loja online</span>
+          <h2>Escolha seus favoritos</h2>
+          <p>Faça seu cadastro, monte o carrinho e envie o pedido em PDF pelo WhatsApp para combinar pagamento e retirada.</p>
+        </div>
+        <button class="btn btn-outline" id="loginFromShop">Entrar / cadastrar</button>
+      </div>
+
+      <div class="shop-layout">
+        <aside class="category-panel">
+          <strong>Categorias</strong>
+          <button class="category active" data-category="todos">Todos</button>
+          <button class="category" data-category="frutas">Frutas</button>
+          <button class="category" data-category="verduras">Verduras</button>
+          <button class="category" data-category="legumes">Legumes</button>
+          <button class="category" data-category="bebidas">Bebidas</button>
+          <button class="category" data-category="laticinios">Laticínios</button>
+          <button class="category" data-category="artesanais">Artesanais</button>
+          <button class="category" data-category="mercearia">Mercearia</button>
+        </aside>
+        <div class="products-area">
+          <div class="shop-toolbar">
+            <label class="search-box">⌕ <input id="productSearch" type="search" placeholder="Buscar produto..."></label>
+            <span id="shopStatus" class="shop-status">Faça login para finalizar seu pedido.</span>
+          </div>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner" id="contato">
+      <div>
+        <span class="eyebrow">São Francisco Xavier</span>
+        <h2>Venha conhecer a Quitanda da Serra.</h2>
+        <p>Um lugar de família, bons produtos e atendimento de verdade.</p>
+      </div>
+      <a class="btn btn-light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua+15+de+Novembro%2C+521%2C+S%C3%A3o+Francisco+Xavier%2C+S%C3%A3o+Jos%C3%A9+dos+Campos%2C+SP">Ver no Google Maps ↗</a>
+    </section>
+  </main>
+
+  <a class="address-fixed" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua+15+de+Novembro%2C+521%2C+S%C3%A3o+Francisco+Xavier%2C+S%C3%A3o+Jos%C3%A9+dos+Campos%2C+SP">
+    <span>⌖</span><span>Rua 15 de Novembro, 521<br><small>São Francisco Xavier • São José dos Campos/SP</small></span>
+  </a>
+
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal auth-modal">
+      <button class="modal-close" data-close="authModal">×</button>
+      <div class="modal-heading">
+        <span class="brand-mark">QS</span>
+        <div><span class="eyebrow">Área do consumidor</span><h2 id="authTitle">Entrar</h2></div>
+      </div>
+      <form id="authForm">
+        <label>Nome completo <input id="authName" type="text" autocomplete="name" placeholder="Seu nome" required></label>
+        <label>E-mail <input id="authEmail" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
+        <label>Senha <input id="authPassword" type="password" autocomplete="new-password" placeholder="Mínimo de 6 caracteres" minlength="6" required></label>
+        <button class="btn btn-primary full" type="submit" id="authSubmit">Criar cadastro</button>
+      </form>
+      <p class="auth-switch" id="authSwitch">Já possui cadastro? <button type="button">Entrar</button></p>
+      <p class="demo-warning">Demonstração frontend: os dados ficam apenas no armazenamento local do navegador. Para produção, conecte este formulário a um backend seguro.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="cartModal">
+    <div class="modal cart-modal">
+      <button class="modal-close" data-close="cartModal">×</button>
+      <div class="modal-heading"><div><span class="eyebrow">Seu pedido</span><h2>Carrinho</h2></div></div>
+      <div id="cartItems"></div>
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <div class="cart-actions">
+        <button class="btn btn-outline" data-close="cartModal">Continuar comprando</button>
+        <button class="btn btn-primary" id="checkoutBtn">Gerar PDF e enviar</button>
+      </div>
+      <p class="small-note">O PDF é gerado no navegador e depois o WhatsApp é aberto para você enviar o pedido à empresa.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="adminModal">
+    <div class="modal admin-modal">
+      <button class="modal-close" data-close="adminModal">×</button>
+      <div class="modal-heading"><div><span class="eyebrow">Painel reservado</span><h2>Proprietário</h2></div></div>
+      <div id="adminLogin">
+        <p class="admin-intro">Acesse o painel para cadastrar produtos e acompanhar os itens mais vendidos.</p>
+        <form id="adminLoginForm">
+          <label>Usuário <input id="adminUser" required value="admin"></label>
+          <label>Senha <input id="adminPass" type="password" required placeholder="Senha de demonstração"></label>
+          <button class="btn btn-primary full" type="submit">Acessar painel</button>
+        </form>
+        <p class="small-note">Senha inicial da demonstração: <strong>quitanda123</strong>. Altere antes de publicar.</p>
+      </div>
+
+      <div id="adminPanel" class="hidden">
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-admin-tab="products">Produtos</button>
+          <button class="admin-tab" data-admin-tab="sales">Mais vendidos</button>
+        </div>
+
+        <div class="admin-content" id="adminProductsTab">
+          <form id="productForm" class="product-form">
+            <input type="hidden" id="editProductId">
+            <label>Produto <input id="productName" required placeholder="Ex.: Banana prata"></label>
+            <label>Categoria
+              <select id="productCategory" required>
+                <option value="frutas">Frutas</option><option value="verduras">Verduras</option><option value="legumes">Legumes</option>
+                <option value="bebidas">Bebidas</option><option value="laticinios">Laticínios</option><option value="artesanais">Artesanais</option><option value="mercearia">Mercearia</option>
+              </select>
+            </label>
+            <label>Preço (R$) <input id="productPrice" type="number" min="0" step="0.01" required></label>
+            <label>Unidade <input id="productUnit" value="unidade" placeholder="kg, unidade, pacote..."></label>
+            <button class="btn btn-primary" type="submit">Salvar produto</button>
+            <button class="btn btn-outline hidden" type="button" id="cancelEdit">Cancelar edição</button>
+          </form>
+          <div id="adminProductList"></div>
+        </div>
+
+        <div class="admin-content hidden" id="adminSalesTab">
+          <div class="chart-card"><canvas id="salesChart"></canvas></div>
+          <p class="small-note">O gráfico usa vendas simuladas para demonstração. No backend real, substitua os dados pelo histórico dos pedidos pagos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-mark">QS</span><div><strong>Quitanda da Serra</strong><small>São Francisco Xavier</small></div></div>
+    <p>© <span id="year"></span> Quitanda da Serra. Frontend desenvolvido para fácil manutenção.</p>
+  </footer>
+
+  <!-- Bibliotecas externas usadas apenas no navegador -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
