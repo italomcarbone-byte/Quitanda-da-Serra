@@ -27,10 +27,20 @@ const defaultProducts = [
   {id:14,name:"Água mineral",category:"bebidas",price:3.50,unit:"1,5 L",emoji:"💧"}
 ];
 
-let products = JSON.parse(localStorage.getItem("qs_products") || "null") || defaultProducts;
-let cart = JSON.parse(localStorage.getItem("qs_cart") || "[]");
-let users = JSON.parse(localStorage.getItem("qs_users") || "[]");
-let loggedUser = JSON.parse(localStorage.getItem("qs_loggedUser") || "null");
+function readStorage(key, fallback){
+  try{
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : JSON.parse(value);
+  }catch(error){
+    console.warn(`Não foi possível ler ${key} do armazenamento local.`, error);
+    return fallback;
+  }
+}
+
+let products = readStorage("qs_products", defaultProducts);
+let cart = readStorage("qs_cart", []);
+let users = readStorage("qs_users", []);
+let loggedUser = readStorage("qs_loggedUser", null);
 let currentCategory = "todos";
 let authMode = "register";
 let salesChart;
@@ -47,8 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function bindEvents(){
-  $("menuToggle").onclick = () => $("mainNav").classList.toggle("open");
-  document.querySelectorAll(".main-nav a").forEach(a => a.onclick = () => $("mainNav").classList.remove("open"));
+  $("menuToggle").onclick = () => {
+    const isOpen = $("mainNav").classList.toggle("open");
+    $("menuToggle").setAttribute("aria-expanded", String(isOpen));
+    $("menuToggle").setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+  };
+  document.querySelectorAll(".main-nav a").forEach(a => a.onclick = closeMenu);
 
   $("openAuth").onclick = () => openModal("authModal");
   $("loginFromShop").onclick = () => openModal("authModal");
@@ -59,8 +73,14 @@ function bindEvents(){
     btn.onclick = () => closeModal(btn.dataset.close);
   });
   document.querySelectorAll(".modal-backdrop").forEach(bg => bg.addEventListener("click", e => {
-    if(e.target === bg) bg.classList.remove("open");
+    if(e.target === bg) closeModal(bg.id);
   }));
+  document.addEventListener("keydown", e => {
+    if(e.key !== "Escape") return;
+    const modal = document.querySelector(".modal-backdrop.open");
+    if(modal) closeModal(modal.id);
+    else closeMenu();
+  });
 
   document.querySelectorAll(".category").forEach(btn => btn.onclick = () => {
     document.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
@@ -101,8 +121,22 @@ function bindEvents(){
   $("cancelEdit").onclick = resetProductForm;
 }
 
-function openModal(id){ $(id).classList.add("open"); }
-function closeModal(id){ $(id).classList.remove("open"); }
+function openModal(id){
+  const modal = $(id);
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+}
+function closeModal(id){
+  const modal = $(id);
+  if(!modal) return;
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+}
+function closeMenu(){
+  $("mainNav").classList.remove("open");
+  $("menuToggle").setAttribute("aria-expanded", "false");
+  $("menuToggle").setAttribute("aria-label", "Abrir menu");
+}
 
 function renderProducts(){
   const grid = $("productsGrid");
@@ -124,7 +158,7 @@ function renderProducts(){
         <div class="product-unit">${escapeHtml(p.unit || "unidade")}</div>
         <div class="product-bottom">
           <span class="product-price">${money(Number(p.price))}</span>
-          <button class="add-btn" onclick="addToCart(${p.id})">Adicionar</button>
+          <button class="add-btn" type="button" aria-label="Adicionar ${escapeHtml(p.name)} ao carrinho" onclick="addToCart(${p.id})">Adicionar</button>
         </div>
       </div>
     </article>
@@ -168,8 +202,8 @@ function renderCart(){
     const subtotal = p.price * item.qty; total += subtotal;
     return `<div class="cart-row">
       <div><strong>${escapeHtml(p.name)}</strong><small>${money(p.price)} / ${escapeHtml(p.unit)}</small></div>
-      <div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><strong>${item.qty}</strong><button onclick="changeQty(${p.id},1)">+</button></div>
-      <div><strong>${money(subtotal)}</strong><button class="remove" onclick="removeFromCart(${p.id})">Excluir item</button></div>
+      <div class="qty"><button type="button" aria-label="Diminuir quantidade" onclick="changeQty(${p.id},-1)">−</button><strong>${item.qty}</strong><button type="button" aria-label="Aumentar quantidade" onclick="changeQty(${p.id},1)">+</button></div>
+      <div><strong>${money(subtotal)}</strong><button class="remove" type="button" onclick="removeFromCart(${p.id})">Excluir item</button></div>
     </div>`;
   }).join("");
   $("cartTotal").textContent = money(total);
