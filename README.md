@@ -1,14 +1,18 @@
 # Quitanda da Serra — site frontend
 
-Projeto estático em HTML + CSS + JavaScript, pronto para abrir localmente ou publicar em hospedagem estática.
+Projeto estático em HTML + CSS + JavaScript, publicado pelo GitHub Pages:
+
+**Link para compartilhar:** https://italomcarbone-byte.github.io/Quitanda-da-Serra/
+
+Cada atualização enviada à branch `main` é publicada automaticamente. O workflow também publica a branch de revisão atual para disponibilizar esta versão.
 
 ## Estrutura
 - `index.html` — páginas/seções e modais.
 - `styles.css` — identidade visual, layout responsivo e componentes.
 - `script.js` — catálogo, login/cadastro demonstrativo, carrinho, PDF, WhatsApp e painel do proprietário.
-- `assets/fachada.png` — foto da fachada.
-- `assets/hortifruti.png` — foto do hortifruti.
-- `assets/interior.png` — foto interna.
+- `fachada.png` — foto da fachada.
+- `hortifruti.png` — foto do hortifruti.
+- `interior.png` — foto interna.
 
 Dimensões das imagens incluídas:
 {
@@ -27,9 +31,12 @@ Dimensões das imagens incluídas:
 }
 
 ## Como testar
-1. Extraia a pasta.
-2. Abra `index.html` no navegador.
-3. Para o fluxo de PDF, mantenha internet ativa para carregar jsPDF e Chart.js via CDN.
+1. Extraia a pasta mantendo `index.html`, `styles.css`, `script.js` e as três imagens no mesmo nível.
+2. Abra `index.html` no navegador (ou use uma hospedagem estática).
+3. Para o fluxo de PDF e o gráfico administrativo, mantenha internet ativa para carregar jsPDF e Chart.js via CDN.
+
+## Limites da demonstração pública
+Este link apresenta o frontend demonstrativo. Cadastro, login, produtos, carrinho e painel administrativo usam apenas o armazenamento local do navegador; não há contas, pedidos ou alterações compartilhados entre dispositivos. O WhatsApp empresarial também precisa ser configurado em `script.js` antes de receber pedidos reais. Não solicite nem informe senhas ou dados sensíveis neste protótipo.
 
 ## Alterações importantes antes de publicar
 No início de `script.js`, altere:

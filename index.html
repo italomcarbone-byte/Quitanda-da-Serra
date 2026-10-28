@@ -20,8 +20,8 @@
       </span>
     </a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
-    <nav class="main-nav" id="mainNav">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
       <a href="#inicio">Início</a>
       <a href="#historia">Nossa história</a>
       <a href="#loja">Loja</a>
@@ -58,7 +58,7 @@
     </section>
 
     <section class="section history" id="historia">
-      <div class="section-photo"><img src="assets/fachada.png" alt="Fachada da Quitanda da Serra"></div>
+      <div class="section-photo"><img src="fachada.png" alt="Fachada da Quitanda da Serra" loading="lazy"></div>
       <div class="section-copy">
         <span class="eyebrow">Nossa história</span>
         <h2>Um sonho que cresceu junto com a família.</h2>
@@ -69,8 +69,8 @@
     </section>
 
     <section class="gallery">
-      <div><img src="assets/hortifruti.png" alt="Hortifruti da Quitanda da Serra"><span>Frescor e variedade</span></div>
-      <div><img src="assets/interior.png" alt="Interior da Quitanda da Serra"><span>Um mercado completo</span></div>
+      <div><img src="hortifruti.png" alt="Hortifruti da Quitanda da Serra" loading="lazy"><span>Frescor e variedade</span></div>
+      <div><img src="interior.png" alt="Interior da Quitanda da Serra" loading="lazy"><span>Um mercado completo</span></div>
     </section>
 
     <section class="section shop-section" id="loja">
@@ -97,7 +97,7 @@
         </aside>
         <div class="products-area">
           <div class="shop-toolbar">
-            <label class="search-box">⌕ <input id="productSearch" type="search" placeholder="Buscar produto..."></label>
+            <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar produto</span><input id="productSearch" type="search" placeholder="Buscar produto..."></label>
             <span id="shopStatus" class="shop-status">Faça login para finalizar seu pedido.</span>
           </div>
           <div class="products-grid" id="productsGrid"></div>
@@ -120,8 +120,8 @@
   </a>
 
   <div class="modal-backdrop" id="authModal">
-    <div class="modal auth-modal">
-      <button class="modal-close" data-close="authModal">×</button>
+    <div class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="modal-close" type="button" aria-label="Fechar janela de autenticação" data-close="authModal">×</button>
       <div class="modal-heading">
         <span class="brand-mark">QS</span>
         <div><span class="eyebrow">Área do consumidor</span><h2 id="authTitle">Entrar</h2></div>
@@ -138,9 +138,9 @@
   </div>
 
   <div class="modal-backdrop" id="cartModal">
-    <div class="modal cart-modal">
-      <button class="modal-close" data-close="cartModal">×</button>
-      <div class="modal-heading"><div><span class="eyebrow">Seu pedido</span><h2>Carrinho</h2></div></div>
+    <div class="modal cart-modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <button class="modal-close" type="button" aria-label="Fechar carrinho" data-close="cartModal">×</button>
+      <div class="modal-heading"><div><span class="eyebrow">Seu pedido</span><h2 id="cartTitle">Carrinho</h2></div></div>
       <div id="cartItems"></div>
       <div class="cart-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
       <div class="cart-actions">
@@ -152,9 +152,9 @@
   </div>
 
   <div class="modal-backdrop" id="adminModal">
-    <div class="modal admin-modal">
-      <button class="modal-close" data-close="adminModal">×</button>
-      <div class="modal-heading"><div><span class="eyebrow">Painel reservado</span><h2>Proprietário</h2></div></div>
+    <div class="modal admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <button class="modal-close" type="button" aria-label="Fechar área do proprietário" data-close="adminModal">×</button>
+      <div class="modal-heading"><div><span class="eyebrow">Painel reservado</span><h2 id="adminTitle">Proprietário</h2></div></div>
       <div id="adminLogin">
         <p class="admin-intro">Acesse o painel para cadastrar produtos e acompanhar os itens mais vendidos.</p>
         <form id="adminLoginForm">
